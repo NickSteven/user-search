@@ -1,7 +1,7 @@
 
 
 .user-container {
-    position: absolute;
+    position: relative;
     display: flex;
     background-color: #3a3b3c;
     width: 50%;
