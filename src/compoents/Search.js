@@ -14,8 +14,8 @@ const [country, setCountry] = useState('');
 
 useEffect(() => {
     axios
-        .get("https://restcountries.com/v3.1/all")
-        .then((response) => response.data)
+        .get("https://countriesnow.space/api/v0.1/countries/")
+        .then((response) => response.data.data)
         .then((data) => setCountries(data));
 }, [])
 
@@ -40,7 +40,7 @@ useEffect(() => {
                         <option value="">Choisir pays...</option>
                         {
                             countries.map((val) =>(
-                                <option value={val.name.common} key={val.name.common} >{val.name.common}</option>
+                                <option value={val.country} key={val.country} >{val.country}</option>
                             ))
                         }
                     </select>
