@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Children } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 import UserList from './UserList';
@@ -50,7 +50,7 @@ useEffect(() => {
             </div>
         </div>
         </div>
-        <UserList/>
+        <UserList />
         </div>
     );
     }
