@@ -1,0 +1,35 @@
+
+
+.user-container {
+    position: absolute;
+    display: flex;
+    background-color: #3a3b3c;
+    width: 50%;
+    top: 50%;
+    left: 25%;
+    margin: -25px 0 0 -25px;
+     border-radius: 10px;
+     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.5);
+    
+}
+
+.user-avatar {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.user-info {
+    position: relative;
+    padding: 10px;
+    color: azure;
+}
+
+span {
+    font-weight: bold;
+}
+
+.user-info-name {
+    font-weight: 500%;
+}

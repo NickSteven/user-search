@@ -1,7 +1,7 @@
 
 
 .container {
-    width: 100%;
+    width: 60%;
     height: 700px;
     background-color: #0d1117;
     margin-top: 100px;
@@ -12,8 +12,8 @@
 
 .search {
     position: relative;
-    margin-top: 15px;
-    margin-left: 100px;
+    margin-top: 25px;
+    margin-left: 180px;
 }
 
 .selector {
