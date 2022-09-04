@@ -8,6 +8,7 @@ import './styles/pagination.css'
 function App() {
   return (
     <div className="App">
+      <h1>User search on github</h1>
       <Search />
     </div>
   );
