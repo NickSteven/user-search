@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 const UserList = (props) => {
-  
-
+    
   return (
     <>
         {/* {users.map((val)=> (<h1 key={val.id}>{val.name}</h1>))} */}
-        {props.users.map((val) => (
+        {props.users.filter(user=>user.login.includes(props.query)).map((val) => (
           <div className="user-container" key={val.id}>
             <div className="user-image">
               <div className="user-image-content">

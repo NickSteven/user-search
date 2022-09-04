@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-select";
 import axios from "axios";
 import UserList from "./UserList";
 import Pagination from "./Pagination";
@@ -13,9 +12,11 @@ const Search = () => {
 
   const [users, setUsers] = useState([]);
 
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
     axios
-      .get("https://api.github.com/search/users?q=location:madagascar")
+      .get("https://api.github.com/search/users?q=location:france&page=6")
       .then((response) => response.data.items)
       .then((data) => {
         //   data.map((val) =>
@@ -62,6 +63,7 @@ const Search = () => {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="entrer un utilisateur"
+                onChange={(e) => setQuery(e.target.value)}
               />
             </div>
           </div>
@@ -72,7 +74,7 @@ const Search = () => {
               value={country}
               onChange={handleOnchange}
             >
-              <option value="">Choisir pays...</option>
+              <option value="">Choose country...</option>
               {countries.map((val) => (
                 <option value={val.country} key={val.cities[1]}>
                   {val.country}
@@ -91,6 +93,7 @@ const Search = () => {
       <div className="row mt-4">
         <UserList
           users={currentUsers}
+          query={query}
           // avatar_url={val.avatar_url}
           // id={val.id}
           // name={val.name}
