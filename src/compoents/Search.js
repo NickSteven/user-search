@@ -14,9 +14,13 @@ const Search = () => {
 
   const [query, setQuery] = useState("");
 
+  const [isLoading, setContainData] = useState(true);
+
+  
+
   useEffect(() => {
     axios
-      .get("https://api.github.com/search/users?q=location:france&page=6")
+      .get(`https://api.github.com/search/users?q=location:${country}`)
       .then((response) => response.data.items)
       .then((data) => {
         //   data.map((val) =>
@@ -26,14 +30,25 @@ const Search = () => {
         //   );
         // console.log(data);
         setUsers(data);
+      
       });
-  }, []);
+  }, [country]);
+
+  /*useEffect(() => {
+    const getUsers = async () => {
+      axios.get(`https://api.github.com/search/users?q=location:${country}`)
+      .then((response) => response.data.items)
+      .then((data) => { setUsers(data) })
+    };
+    
+  }, [])*/
 
   useEffect(() => {
     axios
       .get("https://countriesnow.space/api/v0.1/countries/")
       .then((response) => response.data.data)
       .then((data) => setCountries(data));
+      setContainData(false)
   }, []);
 
   const handleOnchange = (event) => {
@@ -41,6 +56,8 @@ const Search = () => {
   };
   const show = () => {
     console.log(country);
+    
+    //getUsers();
   };
 
   //get current user
@@ -89,7 +106,7 @@ const Search = () => {
           </div>
         </div>
       </div>
-
+      {isLoading ? <p>No data</p> : (
       <div className="row mt-4">
         <UserList
           users={currentUsers}
@@ -100,7 +117,7 @@ const Search = () => {
           // login={val.login}
         />
       </div>
-
+  )}
       <div className="row mt-2">
         <div className="col mr-auto ml-auto">
           <Pagination usersPerPage={usersPerPage} totalUsers={users.length} paginate={paginate} />
