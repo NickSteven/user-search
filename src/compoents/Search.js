@@ -30,25 +30,18 @@ const Search = () => {
         //   );
         // console.log(data);
         setUsers(data);
+        setContainData(false)
       
       });
   }, [country]);
 
-  /*useEffect(() => {
-    const getUsers = async () => {
-      axios.get(`https://api.github.com/search/users?q=location:${country}`)
-      .then((response) => response.data.items)
-      .then((data) => { setUsers(data) })
-    };
-    
-  }, [])*/
 
   useEffect(() => {
     axios
       .get("https://countriesnow.space/api/v0.1/countries/")
       .then((response) => response.data.data)
       .then((data) => setCountries(data));
-      setContainData(false)
+      
   }, []);
 
   const handleOnchange = (event) => {
@@ -91,7 +84,7 @@ const Search = () => {
               value={country}
               onChange={handleOnchange}
             >
-              <option value="">Choose country...</option>
+              <option>Choose country...</option>
               {countries.map((val) => (
                 <option value={val.country} key={val.cities[1]}>
                   {val.country}
@@ -99,14 +92,10 @@ const Search = () => {
               ))}
             </select>
           </div>
-          <div className="col col-lg-2">
-            <button className="btn btn-success button" onClick={show}>
-              Search
-            </button>
-          </div>
+          
         </div>
       </div>
-      {isLoading ? <p>No data</p> : (
+      {isLoading ? <p>DATA LOADING.....</p> : (
       <div className="row mt-4">
         <UserList
           users={currentUsers}
